@@ -1,7 +1,3 @@
-<div align="center">
-
-
-
 \# 🚀 Olist Big Data Engineering ETL Pipeline
 
 
@@ -14,31 +10,17 @@
 
 
 
-<br>
+!\[Python](https://img.shields.io/badge/Python-3.11-blue?style=for-the-badge\&logo=python\&logoColor=white)
 
+!\[PySpark](https://img.shields.io/badge/PySpark-Apache%20Spark-orange?style=for-the-badge\&logo=apachespark\&logoColor=white)
 
+!\[Airflow](https://img.shields.io/badge/Apache%20Airflow-2.10-blue?style=for-the-badge\&logo=apacheairflow\&logoColor=white)
 
-!\[Python](https://img.shields.io/badge/Python-3.11-3776AB?style=for-the-badge\&logo=python\&logoColor=white)
+!\[AWS S3](https://img.shields.io/badge/AWS-S3-orange?style=for-the-badge\&logo=amazonaws\&logoColor=white)
 
-!\[Apache Airflow](https://img.shields.io/badge/Apache%20Airflow-2.10-017CEE?style=for-the-badge\&logo=apacheairflow\&logoColor=white)
+!\[Docker](https://img.shields.io/badge/Docker-Containerized-blue?style=for-the-badge\&logo=docker\&logoColor=white)
 
-!\[Apache Spark](https://img.shields.io/badge/Apache%20Spark-PySpark-E25A1C?style=for-the-badge\&logo=apachespark\&logoColor=white)
-
-!\[AWS](https://img.shields.io/badge/AWS-S3-232F3E?style=for-the-badge\&logo=amazonaws\&logoColor=white)
-
-!\[Docker](https://img.shields.io/badge/Docker-Containerized-2496ED?style=for-the-badge\&logo=docker\&logoColor=white)
-
-
-
-<br>
-
-
-
-A containerized ETL pipeline that automatically ingests Olist e-commerce data from \*\*Amazon S3\*\*, orchestrates processing with \*\*Apache Airflow\*\*, performs distributed transformations using \*\*PySpark and Spark SQL\*\*, and publishes analytics-ready results back to S3.
-
-
-
-</div>
+!\[Spark SQL](https://img.shields.io/badge/Spark-SQL-orange?style=for-the-badge\&logo=apachespark\&logoColor=white)
 
 
 
@@ -46,207 +28,197 @@ A containerized ETL pipeline that automatically ingests Olist e-commerce data fr
 
 
 
-\# 📌 Project Overview
+\## 📌 About This Project
 
 
 
-E-commerce platforms generate data across orders, customers, sellers, products, payments, and logistics.
+This project implements an \*\*end-to-end Big Data Engineering ETL pipeline\*\* using Apache Airflow, PySpark, Spark SQL, AWS S3, Docker, Python, Pandas, and Boto3.
 
 
 
-This project implements an \*\*end-to-end data engineering pipeline\*\* to process the Brazilian Olist E-Commerce dataset and answer a logistics-focused business question:
+The pipeline processes the \*\*Brazilian Olist E-Commerce dataset\*\* to identify orders where sellers handed packages to the carrier \*\*after the required shipping deadline\*\*.
 
 
 
-> \*\*Which orders were handed over by sellers to the carrier after the required shipping deadline?\*\*
+The complete workflow automatically:
 
 
 
-The workflow automates the complete data lifecycle:
+\*\*Downloads raw data from AWS S3 → Orchestrates ETL tasks with Airflow → Processes data using PySpark and Spark SQL → Generates an analytics-ready dataset → Uploads processed results back to AWS S3\*\*
+
+
+
+\---
+
+
+
+\## 📊 Key Results
+
+
+
+| Metric | Result |
+
+|---|---:|
+
+| 🚚 Late-shipment records identified | \*\*10,423\*\* |
+
+| 📋 Final output columns | \*\*13\*\* |
+
+| ⚙️ Automated Airflow tasks | \*\*3\*\* |
+
+| ☁️ Cloud storage | \*\*AWS S3\*\* |
+
+| 📄 Final output | \*\*late\_shipments.csv\*\* |
+
+| ✅ Pipeline execution | \*\*SUCCESS\*\* |
+
+
+
+\---
+
+
+
+\## 🏗️ Pipeline Architecture
 
 
 
 ```text
 
-Raw Cloud Data
+┌──────────────────────────┐
 
-&#x20;     ↓
+│   Olist E-Commerce Data  │
 
-Data Ingestion
+└────────────┬─────────────┘
 
-&#x20;     ↓
+&#x20;            │
 
-Workflow Orchestration
+&#x20;            ▼
 
-&#x20;     ↓
+┌──────────────────────────┐
 
-Distributed Processing
+│       AWS S3             │
 
-&#x20;     ↓
+│       RAW LAYER          │
 
-Business Transformation
+│       raw-data/          │
 
-&#x20;     ↓
+└────────────┬─────────────┘
 
-Processed Cloud Data
+&#x20;            │
+
+&#x20;            │ Python + Boto3
+
+&#x20;            ▼
+
+┌──────────────────────────┐
+
+│     Apache Airflow       │
+
+│  Workflow Orchestration  │
+
+└────────────┬─────────────┘
+
+&#x20;            │
+
+&#x20;            ▼
+
+┌──────────────────────────┐
+
+│        PySpark           │
+
+│      + Spark SQL         │
+
+│                          │
+
+│  Load • Join • Filter    │
+
+│       Transform          │
+
+└────────────┬─────────────┘
+
+&#x20;            │
+
+&#x20;            ▼
+
+┌──────────────────────────┐
+
+│  Late Shipment Analysis  │
+
+│                          │
+
+│     10,423 Records       │
+
+│       13 Columns         │
+
+└────────────┬─────────────┘
+
+&#x20;            │
+
+&#x20;            │ Python + Boto3
+
+&#x20;            ▼
+
+┌──────────────────────────┐
+
+│        AWS S3            │
+
+│    PROCESSED LAYER       │
+
+│                          │
+
+│ processed-data/          │
+
+│ late\_shipments.csv       │
+
+└──────────────────────────┘
 
 ```
 
 
 
-The final pipeline successfully identified \*\*10,423 late-shipment records across 13 analytical columns\*\*.
-
-
-
-\---
-
-
-
-\# 📊 Key Results
-
-
-
-<div align="center">
-
-
-
-| 🚚 Late-Shipment Records | 📋 Output Columns | ⚙️ Automated Tasks | ☁️ Storage |
-
-|:---:|:---:|:---:|:---:|
-
-| \*\*10,423\*\* | \*\*13\*\* | \*\*3 Airflow Tasks\*\* | \*\*AWS S3\*\* |
-
-| Identified by Spark processing | Analytics-ready schema | End-to-end orchestration | Raw + Processed layers |
-
-
-
-</div>
-
-
-
-\### ✅ Pipeline Status
+\### 🔄 End-to-End Data Flow
 
 
 
 ```text
 
-DOWNLOAD RAW DATA     ✅ SUCCESS
+Olist Dataset
 
-&#x20;       ↓
+&#x20;     │
 
-PYSPARK PROCESSING    ✅ SUCCESS
+&#x20;     ▼
 
-&#x20;       ↓
+☁️ AWS S3 Raw Layer
 
-UPLOAD PROCESSED DATA ✅ SUCCESS
+&#x20;     │
 
-```
+&#x20;     ▼
 
+🐍 Python + Boto3
 
+&#x20;     │
 
-\---
+&#x20;     ▼
 
+⚙️ Apache Airflow
 
+&#x20;     │
 
-\# 🏗️ Data Pipeline Architecture
+&#x20;     ▼
 
+🔥 PySpark + Spark SQL
 
+&#x20;     │
 
-```text
+&#x20;     ▼
 
-&#x20;                   ┌───────────────────────┐
+📊 Late Shipment Analysis
 
-&#x20;                   │   Olist E-Commerce    │
+&#x20;     │
 
-&#x20;                   │      Dataset          │
+&#x20;     ▼
 
-&#x20;                   └───────────┬───────────┘
-
-&#x20;                               │
-
-&#x20;                               ▼
-
-&#x20;                   ┌───────────────────────┐
-
-&#x20;                   │       AWS S3          │
-
-&#x20;                   │      RAW LAYER        │
-
-&#x20;                   │      raw-data/        │
-
-&#x20;                   └───────────┬───────────┘
-
-&#x20;                               │
-
-&#x20;                        Python + Boto3
-
-&#x20;                               │
-
-&#x20;                               ▼
-
-&#x20;                   ┌───────────────────────┐
-
-&#x20;                   │    Apache Airflow     │
-
-&#x20;                   │ Workflow Orchestration│
-
-&#x20;                   └───────────┬───────────┘
-
-&#x20;                               │
-
-&#x20;                               ▼
-
-&#x20;                   ┌───────────────────────┐
-
-&#x20;                   │       PySpark         │
-
-&#x20;                   │     + Spark SQL       │
-
-&#x20;                   │                       │
-
-&#x20;                   │ Load • Join • Filter  │
-
-&#x20;                   │      Transform        │
-
-&#x20;                   └───────────┬───────────┘
-
-&#x20;                               │
-
-&#x20;                               ▼
-
-&#x20;                   ┌───────────────────────┐
-
-&#x20;                   │ Late Shipment Analysis│
-
-&#x20;                   │                       │
-
-&#x20;                   │    10,423 Records     │
-
-&#x20;                   │      13 Columns       │
-
-&#x20;                   └───────────┬───────────┘
-
-&#x20;                               │
-
-&#x20;                        Python + Boto3
-
-&#x20;                               │
-
-&#x20;                               ▼
-
-&#x20;                   ┌───────────────────────┐
-
-&#x20;                   │       AWS S3          │
-
-&#x20;                   │   PROCESSED LAYER     │
-
-&#x20;                   │                       │
-
-&#x20;                   │  processed-data/      │
-
-&#x20;                   │ late\_shipments.csv    │
-
-&#x20;                   └───────────────────────┘
+☁️ AWS S3 Processed Layer
 
 ```
 
@@ -256,241 +228,23 @@ UPLOAD PROCESSED DATA ✅ SUCCESS
 
 
 
-\# ⚙️ How the Pipeline Works
+\## ⚙️ Apache Airflow Workflow
 
 
 
-\## 1️⃣ Data Ingestion — AWS S3
-
-
-
-Raw Olist CSV datasets are stored in the AWS S3 raw data layer:
+The ETL pipeline is orchestrated using an Apache Airflow DAG named:
 
 
 
 ```text
 
-AWS S3
-
-└── raw-data/
+olist\_data\_pipeline
 
 ```
 
 
 
-The first Airflow task uses \*\*Python + Boto3\*\* to download the required datasets into the processing environment.
-
-
-
-```text
-
-AWS S3 → Boto3 → Local Processing Environment
-
-```
-
-
-
-\---
-
-
-
-\## 2️⃣ Distributed Processing — PySpark
-
-
-
-The processing stage uses \*\*PySpark\*\* to load and process the datasets.
-
-
-
-The primary datasets used in the transformation are:
-
-
-
-```text
-
-olist\_order\_items\_dataset.csv
-
-olist\_orders\_dataset.csv
-
-olist\_products\_dataset.csv
-
-```
-
-
-
-Spark DataFrames are created and registered as temporary SQL views for transformation.
-
-
-
-\---
-
-
-
-\## 3️⃣ Transformation — Spark SQL
-
-
-
-Spark SQL joins order, product, seller, customer, and logistics-related information.
-
-
-
-The core business condition used to identify missed shipping deadlines is:
-
-
-
-```sql
-
-shipping\_limit\_date < order\_delivered\_carrier\_date
-
-```
-
-
-
-This identifies cases where the seller handed the package to the carrier \*\*after the required shipping deadline\*\*.
-
-
-
-The resulting dataset contains information such as:
-
-
-
-```text
-
-Order
-
-├── Order ID
-
-├── Customer ID
-
-├── Order Status
-
-└── Purchase Timestamp
-
-
-
-Seller / Product
-
-├── Seller ID
-
-├── Product ID
-
-└── Product Category
-
-
-
-Logistics
-
-├── Shipping Limit Date
-
-├── Carrier Delivery Date
-
-├── Customer Delivery Date
-
-└── Estimated Delivery Date
-
-
-
-Financial
-
-├── Price
-
-└── Freight Value
-
-```
-
-
-
-\---
-
-
-
-\## 4️⃣ Processed Output
-
-
-
-The Spark transformation generated:
-
-
-
-```text
-
-╔══════════════════════════════════════╗
-
-║        FINAL PIPELINE RESULT         ║
-
-╠══════════════════════════════════════╣
-
-║ Late Shipment Records  │  10,423    ║
-
-║ Output Columns         │  13        ║
-
-║ Output Format          │  CSV       ║
-
-║ Pipeline Status        │  SUCCESS   ║
-
-╚══════════════════════════════════════╝
-
-```
-
-
-
-Final file:
-
-
-
-```text
-
-late\_shipments.csv
-
-```
-
-
-
-\---
-
-
-
-\## 5️⃣ Cloud Data Publishing
-
-
-
-The final Airflow task uploads the transformed dataset using \*\*Boto3\*\*:
-
-
-
-```text
-
-late\_shipments.csv
-
-&#x20;       ↓
-
-Python + Boto3
-
-&#x20;       ↓
-
-AWS S3
-
-&#x20;       ↓
-
-processed-data/late\_shipments.csv
-
-```
-
-
-
-This creates a clear separation between \*\*raw source data\*\* and \*\*processed analytics-ready data\*\*.
-
-
-
-\---
-
-
-
-\# 🔄 Apache Airflow Orchestration
-
-
-
-The complete ETL workflow is controlled by an Apache Airflow DAG.
+It contains three dependent tasks:
 
 
 
@@ -528,7 +282,27 @@ The complete ETL workflow is controlled by an Apache Airflow DAG.
 
 
 
-Airflow manages task dependencies so each stage executes only after the previous stage completes successfully.
+\### Pipeline Execution
+
+
+
+```text
+
+DOWNLOAD RAW DATA          ✅ SUCCESS
+
+&#x20;       ↓
+
+PROCESS LATE SHIPMENTS     ✅ SUCCESS
+
+&#x20;       ↓
+
+UPLOAD PROCESSED DATA      ✅ SUCCESS
+
+```
+
+
+
+Airflow manages the dependencies so each task executes only after the previous task completes successfully.
 
 
 
@@ -536,15 +310,15 @@ Airflow manages task dependencies so each stage executes only after the previous
 
 
 
-\# 📸 Pipeline in Action
+\# 📸 Project in Action
 
 
 
-\## 🟢 Apache Airflow — Successful End-to-End DAG
+\## 🟢 1. Apache Airflow — Successful DAG Execution
 
 
 
-All three pipeline tasks completed successfully.
+The complete `olist\_data\_pipeline` executed successfully with all three ETL tasks completing successfully.
 
 
 
@@ -552,15 +326,31 @@ All three pipeline tasks completed successfully.
 
 
 
+\*\*What this proves:\*\*
+
+
+
+\- Airflow DAG loaded correctly
+
+\- S3 download task completed
+
+\- PySpark processing completed
+
+\- S3 upload task completed
+
+\- Full pipeline reached \*\*SUCCESS\*\*
+
+
+
 \---
 
 
 
-\## ☁️ AWS S3 — Processed Data Layer
+\## ☁️ 2. AWS S3 — Processed Data Output
 
 
 
-The final transformed dataset was successfully uploaded to the `processed-data/` layer in Amazon S3.
+The transformed dataset was successfully uploaded to the AWS S3 processed-data layer.
 
 
 
@@ -568,19 +358,49 @@ The final transformed dataset was successfully uploaded to the `processed-data/`
 
 
 
+Final cloud output:
+
+
+
+```text
+
+processed-data/
+
+└── late\_shipments.csv
+
+```
+
+
+
+This confirms successful integration between the ETL pipeline and AWS S3.
+
+
+
 \---
 
 
 
-\## 📊 ETL Processing Results
+\## 📊 3. Final ETL Results
 
 
 
-The final processed dataset contains \*\*10,423 late-shipment records and 13 columns\*\*.
+The processed dataset contains \*\*10,423 late-shipment records across 13 columns\*\*.
 
 
 
-!\[ETL Pipeline Results](screenshots/etl-results.png)
+!\[ETL Results](screenshots/etl-results.png)
+
+
+
+```text
+
+Rows:     10,423
+
+Columns:  13
+
+Status:   Successfully Processed
+
+```
 
 
 
@@ -588,11 +408,7 @@ The final processed dataset contains \*\*10,423 late-shipment records and 13 col
 
 
 
-\# 🛠️ Technology Stack
-
-
-
-<div align="center">
+\# 🛠️ Tech Stack
 
 
 
@@ -600,29 +416,25 @@ The final processed dataset contains \*\*10,423 late-shipment records and 13 col
 
 |---|---|
 
-| 🐍 \*\*Programming\*\* | Python |
+| 🐍 Programming | \*\*Python\*\* |
 
-| 🔥 \*\*Big Data Processing\*\* | PySpark, Apache Spark |
+| 🔥 Big Data Processing | \*\*PySpark, Apache Spark\*\* |
 
-| 🗃️ \*\*Data Transformation\*\* | Spark SQL |
+| 🗃️ Data Transformation | \*\*Spark SQL\*\* |
 
-| ⚙️ \*\*Orchestration\*\* | Apache Airflow |
+| ⚙️ Workflow Orchestration | \*\*Apache Airflow\*\* |
 
-| ☁️ \*\*Cloud Storage\*\* | AWS S3 |
+| ☁️ Cloud Storage | \*\*AWS S3\*\* |
 
-| 🔗 \*\*AWS Integration\*\* | Boto3 |
+| 🔗 AWS Integration | \*\*Boto3\*\* |
 
-| 📊 \*\*Data Handling\*\* | Pandas |
+| 📊 Data Handling | \*\*Pandas\*\* |
 
-| 🐳 \*\*Containerization\*\* | Docker, Docker Compose |
+| 🐳 Containerization | \*\*Docker, Docker Compose\*\* |
 
-| ☕ \*\*Runtime\*\* | Java 17 |
+| ☕ Java Runtime | \*\*Java 17\*\* |
 
-| 🔀 \*\*Version Control\*\* | Git, GitHub |
-
-
-
-</div>
+| 🔀 Version Control | \*\*Git, GitHub\*\* |
 
 
 
@@ -630,21 +442,227 @@ The final processed dataset contains \*\*10,423 late-shipment records and 13 col
 
 
 
-\# ☁️ AWS S3 Data Lake Structure
+\# 🔍 How the ETL Pipeline Works
 
 
 
-The project separates source and transformed data into dedicated S3 prefixes.
+\## 1️⃣ Extract — Download Raw Data from AWS S3
+
+
+
+Raw Olist datasets are stored in the S3 raw-data layer.
 
 
 
 ```text
 
-Amazon S3
+AWS S3
 
 │
 
-├── 📂 raw-data/
+└── raw-data/
+
+&#x20;   ├── olist\_customers\_dataset.csv
+
+&#x20;   ├── olist\_geolocation\_dataset.csv
+
+&#x20;   ├── olist\_order\_items\_dataset.csv
+
+&#x20;   ├── olist\_order\_payments\_dataset.csv
+
+&#x20;   ├── olist\_order\_reviews\_dataset.csv
+
+&#x20;   ├── olist\_orders\_dataset.csv
+
+&#x20;   ├── olist\_products\_dataset.csv
+
+&#x20;   ├── olist\_sellers\_dataset.csv
+
+&#x20;   └── product\_category\_name\_translation.csv
+
+```
+
+
+
+The Airflow download task uses \*\*Python and Boto3\*\* to retrieve the required datasets from AWS S3.
+
+
+
+```text
+
+AWS S3
+
+&#x20;  ↓
+
+Boto3
+
+&#x20;  ↓
+
+Local Processing Environment
+
+```
+
+
+
+\---
+
+
+
+\## 2️⃣ Transform — Process Data with PySpark
+
+
+
+PySpark loads and processes the Olist datasets using Spark DataFrames.
+
+
+
+The pipeline combines information related to:
+
+
+
+\- Orders
+
+\- Order items
+
+\- Products
+
+\- Sellers
+
+\- Customers
+
+\- Shipping deadlines
+
+\- Carrier delivery timestamps
+
+\- Product categories
+
+\- Price and freight information
+
+
+
+Spark provides the processing engine used for the transformation stage.
+
+
+
+\---
+
+
+
+\## 3️⃣ Analyze — Spark SQL
+
+
+
+Spark SQL is used to perform data joins, transformations, and business-rule filtering.
+
+
+
+The main logistics condition is:
+
+
+
+```sql
+
+shipping\_limit\_date < order\_delivered\_carrier\_date
+
+```
+
+
+
+This identifies orders where:
+
+
+
+```text
+
+Required Shipping Deadline
+
+&#x20;           <
+
+Actual Handover to Carrier
+
+```
+
+
+
+Therefore, the seller handed the package to the carrier \*\*after the required shipping deadline\*\*.
+
+
+
+\---
+
+
+
+\## 4️⃣ Load — Publish Processed Data to AWS S3
+
+
+
+After processing, the pipeline generates:
+
+
+
+```text
+
+late\_shipments.csv
+
+```
+
+
+
+The final Airflow task uploads this dataset back to AWS S3:
+
+
+
+```text
+
+PySpark Output
+
+&#x20;     │
+
+&#x20;     ▼
+
+late\_shipments.csv
+
+&#x20;     │
+
+&#x20;     ▼
+
+Python + Boto3
+
+&#x20;     │
+
+&#x20;     ▼
+
+AWS S3
+
+&#x20;     │
+
+&#x20;     ▼
+
+processed-data/late\_shipments.csv
+
+```
+
+
+
+\---
+
+
+
+\# ☁️ AWS S3 Data Organization
+
+
+
+The project separates raw and processed data into different logical layers.
+
+
+
+```text
+
+AWS S3 Bucket
+
+│
+
+├── raw-data/
 
 │   │
 
@@ -668,7 +686,7 @@ Amazon S3
 
 │
 
-└── 📂 processed-data/
+└── processed-data/
 
 &#x20;   │
 
@@ -678,25 +696,69 @@ Amazon S3
 
 
 
-\### Data Flow
+\### Data Layer Design
 
 
 
 ```text
 
-RAW LAYER                          PROCESSED LAYER
+RAW DATA                         PROCESSED DATA
 
 
 
-raw-data/                          processed-data/
+raw-data/                        processed-data/
 
-&#x20;   │                                    ▲
+&#x20;   │                                  ▲
 
-&#x20;   │                                    │
+&#x20;   │                                  │
 
-&#x20;   └──────► AIRFLOW ──► SPARK ─────────┘
+&#x20;   └──► AIRFLOW ─► PYSPARK ─► SQL ───┘
 
 ```
+
+
+
+\---
+
+
+
+\# 📋 Final Dataset Schema
+
+
+
+The processed output contains \*\*13 columns\*\*.
+
+
+
+| # | Column | Description |
+
+|---:|---|---|
+
+| 1 | `order\_id` | Unique order identifier |
+
+| 2 | `seller\_id` | Seller identifier |
+
+| 3 | `shipping\_limit\_date` | Required seller shipping deadline |
+
+| 4 | `price` | Product price |
+
+| 5 | `freight\_value` | Freight/shipping value |
+
+| 6 | `product\_id` | Product identifier |
+
+| 7 | `product\_category\_name` | Product category |
+
+| 8 | `customer\_id` | Customer identifier |
+
+| 9 | `order\_status` | Current/final order status |
+
+| 10 | `order\_purchase\_timestamp` | Order purchase timestamp |
+
+| 11 | `order\_delivered\_carrier\_date` | Date handed to carrier |
+
+| 12 | `order\_delivered\_customer\_date` | Customer delivery date |
+
+| 13 | `order\_estimated\_delivery\_date` | Estimated delivery date |
 
 
 
@@ -714,17 +776,17 @@ olist-big-data-etl-pipeline/
 
 │
 
-├── 📂 airflow/
+├── airflow/
 
 │   │
 
-│   ├── 📂 dags/
+│   ├── dags/
 
 │   │   └── late\_shipments\_to\_carrier\_dag.py
 
 │   │
 
-│   └── 📂 scripts/
+│   └── scripts/
 
 │       ├── s3\_download.py
 
@@ -734,19 +796,19 @@ olist-big-data-etl-pipeline/
 
 │
 
-├── 📂 screenshots/
+├── screenshots/
 
 │   ├── airflow-dag-success.png
 
-│   ├── s3-processed-output.png
+│   ├── etl-results.png
 
-│   └── etl-results.png
+│   └── s3-processed-output.png
 
 │
 
-├── 🐳 Dockerfile
+├── Dockerfile
 
-├── 🐳 docker-compose.yaml
+├── docker-compose.yaml
 
 ├── .gitignore
 
@@ -756,39 +818,43 @@ olist-big-data-etl-pipeline/
 
 
 
-Large local datasets and generated files are excluded from GitHub.
-
-
-
 \---
 
 
 
-\# 🐳 Dockerized Environment
+\# 🐳 Dockerized Data Engineering Environment
 
 
 
-The entire processing environment is containerized using Docker.
+The project uses Docker to provide a reproducible environment for the pipeline.
 
 
 
-\### Environment
+The custom Docker environment includes:
 
 
 
 ```text
 
-Apache Airflow 2.10.5
+Apache Airflow
+
+&#x20;     +
 
 Python 3.11
 
+&#x20;     +
+
 Java 17
 
-PySpark
+&#x20;     +
 
-Apache Spark
+PySpark / Apache Spark
+
+&#x20;     +
 
 Pandas
+
+&#x20;     +
 
 Boto3
 
@@ -796,7 +862,23 @@ Boto3
 
 
 
-The custom Docker image provides the dependencies required to run Airflow, Spark processing, and AWS integration in one reproducible environment.
+\### Why Docker?
+
+
+
+Docker provides:
+
+
+
+\- Consistent development environment
+
+\- Dependency isolation
+
+\- Reproducible setup
+
+\- Easier Airflow deployment
+
+\- Integrated Python, Spark, and Java runtime
 
 
 
@@ -804,7 +886,7 @@ The custom Docker image provides the dependencies required to run Airflow, Spark
 
 
 
-\# 🚀 Running the Project
+\# 🚀 How to Run the Project
 
 
 
@@ -812,7 +894,7 @@ The custom Docker image provides the dependencies required to run Airflow, Spark
 
 
 
-Make sure the following are installed:
+Install:
 
 
 
@@ -828,7 +910,7 @@ Git
 
 
 
-You also need:
+You also need access to:
 
 
 
@@ -836,17 +918,11 @@ You also need:
 
 AWS Account
 
-&#x20;    +
+AWS S3 Bucket
 
-Configured AWS Credentials
+AWS Credentials
 
-&#x20;    +
-
-S3 Bucket
-
-&#x20;    +
-
-Olist Raw Dataset
+Olist Dataset
 
 ```
 
@@ -856,11 +932,39 @@ Olist Raw Dataset
 
 
 
-\## Step 1 — Configure AWS
+\## Step 1 — Clone the Repository
 
 
 
-Configure your AWS credentials locally:
+```bash
+
+git clone https://github.com/Rohith4-sai/olist-big-data-etl-pipeline.git
+
+```
+
+
+
+Enter the project directory:
+
+
+
+```bash
+
+cd olist-big-data-etl-pipeline
+
+```
+
+
+
+\---
+
+
+
+\## Step 2 — Configure AWS Credentials
+
+
+
+Configure AWS locally:
 
 
 
@@ -872,7 +976,25 @@ aws configure
 
 
 
-AWS credentials should \*\*never be hard-coded into source code\*\*.
+Enter your:
+
+
+
+```text
+
+AWS Access Key ID
+
+AWS Secret Access Key
+
+Default Region
+
+Output Format
+
+```
+
+
+
+\*\*Never hard-code AWS credentials into Python files or commit credentials to GitHub.\*\*
 
 
 
@@ -880,11 +1002,11 @@ AWS credentials should \*\*never be hard-coded into source code\*\*.
 
 
 
-\## Step 2 — Prepare S3 Raw Data
+\## Step 3 — Prepare the S3 Raw Data Layer
 
 
 
-Upload the Olist datasets into:
+Upload the Olist CSV datasets to:
 
 
 
@@ -896,13 +1018,15 @@ raw-data/
 
 
 
-Expected structure:
+Example:
 
 
 
 ```text
 
 your-s3-bucket/
+
+│
 
 └── raw-data/
 
@@ -922,7 +1046,7 @@ your-s3-bucket/
 
 
 
-\## Step 3 — Build Docker Image
+\## Step 4 — Build the Docker Image
 
 
 
@@ -938,7 +1062,7 @@ docker compose build
 
 
 
-\## Step 4 — Start the Environment
+\## Step 5 — Start the Environment
 
 
 
@@ -950,7 +1074,7 @@ docker compose up -d
 
 
 
-Verify the container:
+Check the container:
 
 
 
@@ -966,11 +1090,39 @@ docker ps
 
 
 
-\## Step 5 — Open Apache Airflow
+\## Step 6 — Verify Airflow Scheduler
 
 
 
-Open the Airflow web interface:
+```bash
+
+docker exec olist-airflow airflow jobs check --job-type SchedulerJob
+
+```
+
+
+
+Expected result:
+
+
+
+```text
+
+Found one alive job.
+
+```
+
+
+
+\---
+
+
+
+\## Step 7 — Open Apache Airflow
+
+
+
+Open:
 
 
 
@@ -982,7 +1134,7 @@ http://localhost:8080
 
 
 
-Find the DAG:
+Find:
 
 
 
@@ -994,7 +1146,7 @@ olist\_data\_pipeline
 
 
 
-Enable and trigger the pipeline.
+Enable the DAG and manually trigger it.
 
 
 
@@ -1002,161 +1154,173 @@ Enable and trigger the pipeline.
 
 
 
-\## Step 6 — Pipeline Execution
+\## Step 8 — Monitor Pipeline Execution
 
 
 
-Airflow automatically executes:
+The pipeline executes:
 
 
 
 ```text
 
-S3 DOWNLOAD
+download\_raw\_data\_from\_s3
 
-&#x20;    ↓
+&#x20;           │
 
-PYSPARK + SPARK SQL ETL
+&#x20;           ▼
 
-&#x20;    ↓
+process\_late\_shipments
 
-S3 UPLOAD
+&#x20;           │
+
+&#x20;           ▼
+
+upload\_processed\_data\_to\_s3
 
 ```
 
 
 
-A successful execution should show all pipeline tasks in the \*\*Success\*\* state.
-
-
-
-\---
-
-
-
-\# 📋 Final Dataset Schema
-
-
-
-The processed dataset contains \*\*13 columns\*\*:
-
-
-
-| # | Column |
-
-|---:|---|
-
-| 1 | `order\_id` |
-
-| 2 | `seller\_id` |
-
-| 3 | `shipping\_limit\_date` |
-
-| 4 | `price` |
-
-| 5 | `freight\_value` |
-
-| 6 | `product\_id` |
-
-| 7 | `product\_category\_name` |
-
-| 8 | `customer\_id` |
-
-| 9 | `order\_status` |
-
-| 10 | `order\_purchase\_timestamp` |
-
-| 11 | `order\_delivered\_carrier\_date` |
-
-| 12 | `order\_delivered\_customer\_date` |
-
-| 13 | `order\_estimated\_delivery\_date` |
-
-
-
-\---
-
-
-
-\# 🧠 Data Engineering Skills Demonstrated
+Wait until all three tasks show:
 
 
 
 ```text
 
-&#x20;                   DATA ENGINEERING
-
-&#x20;                          │
-
-&#x20;         ┌────────────────┼────────────────┐
-
-&#x20;         │                │                │
-
-&#x20;         ▼                ▼                ▼
-
-&#x20;    INGESTION        PROCESSING      ORCHESTRATION
-
-&#x20;   Python/Boto3       PySpark           Airflow
-
-&#x20;         │                │                │
-
-&#x20;         └────────────────┼────────────────┘
-
-&#x20;                          │
-
-&#x20;                          ▼
-
-&#x20;                   TRANSFORMATION
-
-&#x20;                     Spark SQL
-
-&#x20;                          │
-
-&#x20;                          ▼
-
-&#x20;                   CLOUD STORAGE
-
-&#x20;                      AWS S3
-
-&#x20;                          │
-
-&#x20;                          ▼
-
-&#x20;                   CONTAINERIZATION
-
-&#x20;                       Docker
+SUCCESS ✅
 
 ```
 
 
 
-This project demonstrates:
+\---
+
+
+
+\## Step 9 — Verify Final Output
+
+
+
+The processed file should be available in AWS S3:
+
+
+
+```text
+
+processed-data/late\_shipments.csv
+
+```
+
+
+
+Expected processed result:
+
+
+
+```text
+
+Rows:     10,423
+
+Columns:  13
+
+```
+
+
+
+\---
+
+
+
+\# 🧠 Skills Demonstrated
+
+
+
+\### Data Engineering
 
 
 
 \- End-to-end ETL pipeline development
 
-\- Apache Airflow DAG orchestration
+\- Data ingestion
 
-\- PySpark distributed data processing
+\- Data transformation
 
-\- Spark SQL transformations
+\- Data integration
 
-\- Multi-table data joins
+\- Multi-table joins
 
-\- Business-rule-based filtering
+\- Business-rule filtering
 
-\- AWS S3 cloud data storage
+\- Raw and processed data-layer design
 
-\- Raw and processed data-layer organization
 
-\- Python/Boto3 AWS integration
 
-\- Docker containerization
+\### Big Data
 
-\- Pipeline dependency management
 
-\- Git and GitHub version control
+
+\- PySpark
+
+\- Apache Spark
+
+\- Spark DataFrames
+
+\- Spark SQL
+
+
+
+\### Workflow Orchestration
+
+
+
+\- Apache Airflow
+
+\- DAG development
+
+\- Task dependencies
+
+\- Pipeline execution monitoring
+
+
+
+\### Cloud
+
+
+
+\- AWS S3
+
+\- Python Boto3 integration
+
+\- Cloud-based raw and processed data storage
+
+
+
+\### DevOps
+
+
+
+\- Docker
+
+\- Docker Compose
+
+\- Containerized development environments
+
+
+
+\### Software Engineering
+
+
+
+\- Python
+
+\- Git
+
+\- GitHub
+
+\- Modular pipeline scripts
+
+\- Environment configuration
 
 
 
@@ -1168,11 +1332,11 @@ This project demonstrates:
 
 
 
-Sensitive credentials are not stored in the repository.
+Sensitive information is excluded from version control.
 
 
 
-The `.gitignore` excludes local and sensitive files such as:
+The `.gitignore` prevents local or sensitive files from being committed, including:
 
 
 
@@ -1182,25 +1346,95 @@ The `.gitignore` excludes local and sensitive files such as:
 
 .env.\*
 
-.aws/
-
-credentials
-
 \*.pem
 
 \*.key
 
+
+
+.aws/
+
+credentials
+
+
+
 airflow.db
+
+\*.db
 
 standalone\_admin\_password.txt
 
+logs/
+
+airflow/logs/
+
+
+
 Data/
+
+
+
+.venv/
+
+venv/
 
 ```
 
 
 
-AWS credentials are configured locally and accessed by the Dockerized pipeline when required.
+AWS credentials are configured locally rather than hard-coded into the source code.
+
+
+
+\---
+
+
+
+\# 🎯 Business Value
+
+
+
+Late handover of packages to logistics carriers can contribute to:
+
+
+
+\- Delivery delays
+
+\- Poor customer experience
+
+\- Increased customer complaints
+
+\- Lower seller performance
+
+\- Logistics inefficiencies
+
+
+
+This pipeline creates an analytics-ready dataset that can be used to investigate:
+
+
+
+```text
+
+Which sellers frequently miss shipping deadlines?
+
+
+
+Which product categories experience more delays?
+
+
+
+How much revenue is associated with late shipments?
+
+
+
+Are certain time periods associated with higher delays?
+
+
+
+How does late carrier handover affect final customer delivery?
+
+```
 
 
 
@@ -1212,33 +1446,29 @@ AWS credentials are configured locally and accessed by the Dockerized pipeline w
 
 
 
-<div align="center">
-
-
-
 | Feature | Implementation |
 
 |---|---|
 
-| ☁️ Cloud Storage | AWS S3 raw and processed layers |
+| 📥 Data ingestion | AWS S3 + Boto3 |
 
-| ⚙️ Workflow Automation | Apache Airflow DAG |
+| ⚙️ Workflow orchestration | Apache Airflow |
 
-| 🔥 Big Data Processing | PySpark |
+| 🔥 Distributed processing | PySpark / Apache Spark |
 
-| 🗃️ SQL Transformation | Spark SQL |
+| 🗃️ Data transformation | Spark SQL |
 
-| 🔗 Cloud Integration | Python + Boto3 |
+| ☁️ Cloud storage | AWS S3 |
 
-| 🐳 Reproducible Environment | Docker |
+| 🐳 Containerization | Docker |
 
-| 📊 Business Output | Late-shipment analytics dataset |
+| 📊 Processed output | 10,423 records |
 
-| ✅ Verified Result | 10,423 records / 13 columns |
+| 📋 Output schema | 13 columns |
 
+| 🔄 Automated stages | 3 Airflow tasks |
 
-
-</div>
+| ✅ Final status | Successfully executed |
 
 
 
@@ -1250,29 +1480,31 @@ AWS credentials are configured locally and accessed by the Dockerized pipeline w
 
 
 
-The pipeline can be extended with:
+Possible improvements include:
 
 
 
-\- \*\*PostgreSQL\*\* for production-grade Airflow metadata storage
+\- Store Airflow metadata in \*\*PostgreSQL\*\* instead of SQLite
 
-\- \*\*Parquet\*\* instead of CSV for efficient analytical workloads
+\- Convert CSV output to \*\*Parquet\*\*
 
-\- \*\*AWS Glue Data Catalog\*\* for metadata management
+\- Add \*\*AWS Glue Data Catalog\*\*
 
-\- \*\*Amazon Athena\*\* for serverless SQL analytics
+\- Query processed datasets using \*\*Amazon Athena\*\*
 
-\- \*\*AWS EMR\*\* for distributed cloud Spark processing
+\- Run distributed Spark workloads using \*\*AWS EMR\*\*
 
-\- Automated \*\*data-quality validation\*\*
+\- Add automated data-quality validation
 
-\- Pipeline monitoring and failure alerts
+\- Add failure notifications and monitoring
 
-\- Scheduled incremental data processing
+\- Implement incremental ETL processing
 
-\- Data partitioning for improved query performance
+\- Partition processed datasets
 
-\- BI dashboards for logistics performance analysis
+\- Build logistics analytics dashboards
+
+\- Add CI/CD for automated testing and deployment
 
 
 
@@ -1280,83 +1512,95 @@ The pipeline can be extended with:
 
 
 
-\# 🏁 End-to-End Outcome
+\# 🏁 Final Outcome
 
 
 
 ```text
 
-&#x20;                    OLIST E-COMMERCE DATA
+&#x20;               OLIST E-COMMERCE DATA
 
-&#x20;                             │
+&#x20;                        │
 
-&#x20;                             ▼
+&#x20;                        ▼
 
-&#x20;                    ☁️ AWS S3 RAW DATA
+&#x20;                ☁️ AWS S3 RAW LAYER
 
-&#x20;                             │
+&#x20;                        │
 
-&#x20;                             ▼
+&#x20;                        ▼
 
-&#x20;                      🐍 PYTHON + BOTO3
+&#x20;                 🐍 PYTHON + BOTO3
 
-&#x20;                             │
+&#x20;                        │
 
-&#x20;                             ▼
+&#x20;                        ▼
 
-&#x20;                    ⚙️ APACHE AIRFLOW
+&#x20;                ⚙️ APACHE AIRFLOW
 
-&#x20;                             │
+&#x20;                        │
 
-&#x20;                             ▼
+&#x20;                        ▼
 
-&#x20;                   🔥 PYSPARK + SPARK SQL
+&#x20;               🔥 PYSPARK + SPARK SQL
 
-&#x20;                             │
+&#x20;                        │
 
-&#x20;                             ▼
+&#x20;                        ▼
 
-&#x20;                   📊 LOGISTICS ANALYSIS
+&#x20;               📊 LOGISTICS ANALYSIS
 
-&#x20;                             │
+&#x20;                        │
 
-&#x20;                             ▼
+&#x20;                        ▼
 
-&#x20;                   10,423 LATE SHIPMENTS
+&#x20;              10,423 LATE-SHIPMENT
 
-&#x20;                        13 COLUMNS
+&#x20;                    RECORDS
 
-&#x20;                             │
+&#x20;                        │
 
-&#x20;                             ▼
+&#x20;                        ▼
 
-&#x20;                   ☁️ AWS S3 PROCESSED
+&#x20;               ☁️ AWS S3 PROCESSED
 
-&#x20;                             │
+&#x20;                        │
 
-&#x20;                             ▼
+&#x20;                        ▼
 
-&#x20;                  ✅ PIPELINE COMPLETED
+&#x20;                ✅ PIPELINE SUCCESS
 
 ```
 
 
 
-<div align="center">
+\---
 
 
 
-\### ⭐ Olist Big Data Engineering ETL Pipeline
+\# 👨‍💻 Project
 
 
 
-\*\*Python • PySpark • Spark SQL • Apache Airflow • AWS S3 • Docker\*\*
+\*\*Olist Big Data Engineering ETL Pipeline\*\*
 
 
 
-\*\*Project Status: ✅ Successfully Completed\*\*
+Built as a hands-on data engineering project demonstrating an end-to-end workflow across \*\*cloud storage, workflow orchestration, distributed data processing, SQL transformation, and containerization\*\*.
 
 
 
-</div>
+\### Core Technologies
+
+
+
+\*\*Python • PySpark • Apache Spark • Spark SQL • Apache Airflow • AWS S3 • Boto3 • Docker • Git\*\*
+
+
+
+\---
+
+
+
+⭐ \*\*If you find this project useful, consider starring the repository.\*\*
 
