@@ -1,4 +1,4 @@
-\# 🚀 Olist Big Data Engineering ETL Pipeline
+﻿\# ðŸš€ Olist Big Data Engineering ETL Pipeline
 
 
 
@@ -6,7 +6,7 @@
 
 
 
-\*\*AWS S3 → Apache Airflow → PySpark → Spark SQL → AWS S3\*\*
+\*\*AWS S3 â†’ Apache Airflow â†’ PySpark â†’ Spark SQL â†’ AWS S3\*\*
 
 
 
@@ -28,7 +28,7 @@
 
 
 
-\## 📌 About This Project
+\## ðŸ“Œ About This Project
 
 
 
@@ -44,7 +44,7 @@ The complete workflow automatically:
 
 
 
-\*\*Downloads raw data from AWS S3 → Orchestrates ETL tasks with Airflow → Processes data using PySpark and Spark SQL → Generates an analytics-ready dataset → Uploads processed results back to AWS S3\*\*
+\*\*Downloads raw data from AWS S3 â†’ Orchestrates ETL tasks with Airflow â†’ Processes data using PySpark and Spark SQL â†’ Generates an analytics-ready dataset â†’ Uploads processed results back to AWS S3\*\*
 
 
 
@@ -52,7 +52,7 @@ The complete workflow automatically:
 
 
 
-\## 📊 Key Results
+\## ðŸ“Š Key Results
 
 
 
@@ -60,17 +60,17 @@ The complete workflow automatically:
 
 |---|---:|
 
-| 🚚 Late-shipment records identified | \*\*10,423\*\* |
+| ðŸšš Late-shipment records identified | \*\*10,423\*\* |
 
-| 📋 Final output columns | \*\*13\*\* |
+| ðŸ“‹ Final output columns | \*\*13\*\* |
 
-| ⚙️ Automated Airflow tasks | \*\*3\*\* |
+| âš™ï¸ Automated Airflow tasks | \*\*3\*\* |
 
-| ☁️ Cloud storage | \*\*AWS S3\*\* |
+| â˜ï¸ Cloud storage | \*\*AWS S3\*\* |
 
-| 📄 Final output | \*\*late\_shipments.csv\*\* |
+| ðŸ“„ Final output | \*\*late\_shipments.csv\*\* |
 
-| ✅ Pipeline execution | \*\*SUCCESS\*\* |
+| âœ… Pipeline execution | \*\*SUCCESS\*\* |
 
 
 
@@ -78,105 +78,105 @@ The complete workflow automatically:
 
 
 
-\## 🏗️ Pipeline Architecture
+\## ðŸ—ï¸ Pipeline Architecture
 
 
 
 ```text
 
-┌──────────────────────────┐
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
 
-│   Olist E-Commerce Data  │
+â”‚   Olist E-Commerce Data  â”‚
 
-└────────────┬─────────────┘
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 
-&#x20;            │
+&#x20;            â”‚
 
-&#x20;            ▼
+&#x20;            â–¼
 
-┌──────────────────────────┐
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
 
-│       AWS S3             │
+â”‚       AWS S3             â”‚
 
-│       RAW LAYER          │
+â”‚       RAW LAYER          â”‚
 
-│       raw-data/          │
+â”‚       raw-data/          â”‚
 
-└────────────┬─────────────┘
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 
-&#x20;            │
+&#x20;            â”‚
 
-&#x20;            │ Python + Boto3
+&#x20;            â”‚ Python + Boto3
 
-&#x20;            ▼
+&#x20;            â–¼
 
-┌──────────────────────────┐
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
 
-│     Apache Airflow       │
+â”‚     Apache Airflow       â”‚
 
-│  Workflow Orchestration  │
+â”‚  Workflow Orchestration  â”‚
 
-└────────────┬─────────────┘
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 
-&#x20;            │
+&#x20;            â”‚
 
-&#x20;            ▼
+&#x20;            â–¼
 
-┌──────────────────────────┐
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
 
-│        PySpark           │
+â”‚        PySpark           â”‚
 
-│      + Spark SQL         │
+â”‚      + Spark SQL         â”‚
 
-│                          │
+â”‚                          â”‚
 
-│  Load • Join • Filter    │
+â”‚  Load â€¢ Join â€¢ Filter    â”‚
 
-│       Transform          │
+â”‚       Transform          â”‚
 
-└────────────┬─────────────┘
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 
-&#x20;            │
+&#x20;            â”‚
 
-&#x20;            ▼
+&#x20;            â–¼
 
-┌──────────────────────────┐
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
 
-│  Late Shipment Analysis  │
+â”‚  Late Shipment Analysis  â”‚
 
-│                          │
+â”‚                          â”‚
 
-│     10,423 Records       │
+â”‚     10,423 Records       â”‚
 
-│       13 Columns         │
+â”‚       13 Columns         â”‚
 
-└────────────┬─────────────┘
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 
-&#x20;            │
+&#x20;            â”‚
 
-&#x20;            │ Python + Boto3
+&#x20;            â”‚ Python + Boto3
 
-&#x20;            ▼
+&#x20;            â–¼
 
-┌──────────────────────────┐
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
 
-│        AWS S3            │
+â”‚        AWS S3            â”‚
 
-│    PROCESSED LAYER       │
+â”‚    PROCESSED LAYER       â”‚
 
-│                          │
+â”‚                          â”‚
 
-│ processed-data/          │
+â”‚ processed-data/          â”‚
 
-│ late\_shipments.csv       │
+â”‚ late\_shipments.csv       â”‚
 
-└──────────────────────────┘
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 
 ```
 
 
 
-\### 🔄 End-to-End Data Flow
+\### ðŸ”„ End-to-End Data Flow
 
 
 
@@ -184,41 +184,41 @@ The complete workflow automatically:
 
 Olist Dataset
 
-&#x20;     │
+&#x20;     â”‚
 
-&#x20;     ▼
+&#x20;     â–¼
 
-☁️ AWS S3 Raw Layer
+â˜ï¸ AWS S3 Raw Layer
 
-&#x20;     │
+&#x20;     â”‚
 
-&#x20;     ▼
+&#x20;     â–¼
 
-🐍 Python + Boto3
+ðŸ Python + Boto3
 
-&#x20;     │
+&#x20;     â”‚
 
-&#x20;     ▼
+&#x20;     â–¼
 
-⚙️ Apache Airflow
+âš™ï¸ Apache Airflow
 
-&#x20;     │
+&#x20;     â”‚
 
-&#x20;     ▼
+&#x20;     â–¼
 
-🔥 PySpark + Spark SQL
+ðŸ”¥ PySpark + Spark SQL
 
-&#x20;     │
+&#x20;     â”‚
 
-&#x20;     ▼
+&#x20;     â–¼
 
-📊 Late Shipment Analysis
+ðŸ“Š Late Shipment Analysis
 
-&#x20;     │
+&#x20;     â”‚
 
-&#x20;     ▼
+&#x20;     â–¼
 
-☁️ AWS S3 Processed Layer
+â˜ï¸ AWS S3 Processed Layer
 
 ```
 
@@ -228,7 +228,7 @@ Olist Dataset
 
 
 
-\## ⚙️ Apache Airflow Workflow
+\## âš™ï¸ Apache Airflow Workflow
 
 
 
@@ -250,33 +250,33 @@ It contains three dependent tasks:
 
 ```text
 
-┌─────────────────────────────┐
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
 
-│  download\_raw\_data\_from\_s3  │
+â”‚  download\_raw\_data\_from\_s3  â”‚
 
-└──────────────┬──────────────┘
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 
-&#x20;              │
+&#x20;              â”‚
 
-&#x20;              ▼
+&#x20;              â–¼
 
-┌─────────────────────────────┐
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
 
-│   process\_late\_shipments    │
+â”‚   process\_late\_shipments    â”‚
 
-│     PySpark + Spark SQL     │
+â”‚     PySpark + Spark SQL     â”‚
 
-└──────────────┬──────────────┘
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 
-&#x20;              │
+&#x20;              â”‚
 
-&#x20;              ▼
+&#x20;              â–¼
 
-┌─────────────────────────────┐
+â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
 
-│ upload\_processed\_data\_to\_s3 │
+â”‚ upload\_processed\_data\_to\_s3 â”‚
 
-└─────────────────────────────┘
+â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
 
 ```
 
@@ -288,15 +288,15 @@ It contains three dependent tasks:
 
 ```text
 
-DOWNLOAD RAW DATA          ✅ SUCCESS
+DOWNLOAD RAW DATA          âœ… SUCCESS
 
-&#x20;       ↓
+&#x20;       â†“
 
-PROCESS LATE SHIPMENTS     ✅ SUCCESS
+PROCESS LATE SHIPMENTS     âœ… SUCCESS
 
-&#x20;       ↓
+&#x20;       â†“
 
-UPLOAD PROCESSED DATA      ✅ SUCCESS
+UPLOAD PROCESSED DATA      âœ… SUCCESS
 
 ```
 
@@ -310,11 +310,11 @@ Airflow manages the dependencies so each task executes only after the previous t
 
 
 
-\# 📸 Project in Action
+\# ðŸ“¸ Project in Action
 
 
 
-\## 🟢 1. Apache Airflow — Successful DAG Execution
+\## ðŸŸ¢ 1. Apache Airflow â€” Successful DAG Execution
 
 
 
@@ -346,7 +346,7 @@ The complete `olist\_data\_pipeline` executed successfully with all three ETL ta
 
 
 
-\## ☁️ 2. AWS S3 — Processed Data Output
+\## â˜ï¸ 2. AWS S3 â€” Processed Data Output
 
 
 
@@ -366,7 +366,7 @@ Final cloud output:
 
 processed-data/
 
-└── late\_shipments.csv
+â””â”€â”€ late\_shipments.csv
 
 ```
 
@@ -380,7 +380,7 @@ This confirms successful integration between the ETL pipeline and AWS S3.
 
 
 
-\## 📊 3. Final ETL Results
+\## ðŸ“Š 3. Final ETL Results
 
 
 
@@ -408,7 +408,7 @@ Status:   Successfully Processed
 
 
 
-\# 🛠️ Tech Stack
+\# ðŸ› ï¸ Tech Stack
 
 
 
@@ -416,25 +416,25 @@ Status:   Successfully Processed
 
 |---|---|
 
-| 🐍 Programming | \*\*Python\*\* |
+| ðŸ Programming | \*\*Python\*\* |
 
-| 🔥 Big Data Processing | \*\*PySpark, Apache Spark\*\* |
+| ðŸ”¥ Big Data Processing | \*\*PySpark, Apache Spark\*\* |
 
-| 🗃️ Data Transformation | \*\*Spark SQL\*\* |
+| ðŸ—ƒï¸ Data Transformation | \*\*Spark SQL\*\* |
 
-| ⚙️ Workflow Orchestration | \*\*Apache Airflow\*\* |
+| âš™ï¸ Workflow Orchestration | \*\*Apache Airflow\*\* |
 
-| ☁️ Cloud Storage | \*\*AWS S3\*\* |
+| â˜ï¸ Cloud Storage | \*\*AWS S3\*\* |
 
-| 🔗 AWS Integration | \*\*Boto3\*\* |
+| ðŸ”— AWS Integration | \*\*Boto3\*\* |
 
-| 📊 Data Handling | \*\*Pandas\*\* |
+| ðŸ“Š Data Handling | \*\*Pandas\*\* |
 
-| 🐳 Containerization | \*\*Docker, Docker Compose\*\* |
+| ðŸ³ Containerization | \*\*Docker, Docker Compose\*\* |
 
-| ☕ Java Runtime | \*\*Java 17\*\* |
+| â˜• Java Runtime | \*\*Java 17\*\* |
 
-| 🔀 Version Control | \*\*Git, GitHub\*\* |
+| ðŸ”€ Version Control | \*\*Git, GitHub\*\* |
 
 
 
@@ -442,11 +442,11 @@ Status:   Successfully Processed
 
 
 
-\# 🔍 How the ETL Pipeline Works
+\# ðŸ” How the ETL Pipeline Works
 
 
 
-\## 1️⃣ Extract — Download Raw Data from AWS S3
+\## 1ï¸âƒ£ Extract â€” Download Raw Data from AWS S3
 
 
 
@@ -458,27 +458,27 @@ Raw Olist datasets are stored in the S3 raw-data layer.
 
 AWS S3
 
-│
+â”‚
 
-└── raw-data/
+â””â”€â”€ raw-data/
 
-&#x20;   ├── olist\_customers\_dataset.csv
+&#x20;   â”œâ”€â”€ olist\_customers\_dataset.csv
 
-&#x20;   ├── olist\_geolocation\_dataset.csv
+&#x20;   â”œâ”€â”€ olist\_geolocation\_dataset.csv
 
-&#x20;   ├── olist\_order\_items\_dataset.csv
+&#x20;   â”œâ”€â”€ olist\_order\_items\_dataset.csv
 
-&#x20;   ├── olist\_order\_payments\_dataset.csv
+&#x20;   â”œâ”€â”€ olist\_order\_payments\_dataset.csv
 
-&#x20;   ├── olist\_order\_reviews\_dataset.csv
+&#x20;   â”œâ”€â”€ olist\_order\_reviews\_dataset.csv
 
-&#x20;   ├── olist\_orders\_dataset.csv
+&#x20;   â”œâ”€â”€ olist\_orders\_dataset.csv
 
-&#x20;   ├── olist\_products\_dataset.csv
+&#x20;   â”œâ”€â”€ olist\_products\_dataset.csv
 
-&#x20;   ├── olist\_sellers\_dataset.csv
+&#x20;   â”œâ”€â”€ olist\_sellers\_dataset.csv
 
-&#x20;   └── product\_category\_name\_translation.csv
+&#x20;   â””â”€â”€ product\_category\_name\_translation.csv
 
 ```
 
@@ -492,11 +492,11 @@ The Airflow download task uses \*\*Python and Boto3\*\* to retrieve the required
 
 AWS S3
 
-&#x20;  ↓
+&#x20;  â†“
 
 Boto3
 
-&#x20;  ↓
+&#x20;  â†“
 
 Local Processing Environment
 
@@ -508,7 +508,7 @@ Local Processing Environment
 
 
 
-\## 2️⃣ Transform — Process Data with PySpark
+\## 2ï¸âƒ£ Transform â€” Process Data with PySpark
 
 
 
@@ -548,7 +548,7 @@ Spark provides the processing engine used for the transformation stage.
 
 
 
-\## 3️⃣ Analyze — Spark SQL
+\## 3ï¸âƒ£ Analyze â€” Spark SQL
 
 
 
@@ -592,7 +592,7 @@ Therefore, the seller handed the package to the carrier \*\*after the required s
 
 
 
-\## 4️⃣ Load — Publish Processed Data to AWS S3
+\## 4ï¸âƒ£ Load â€” Publish Processed Data to AWS S3
 
 
 
@@ -616,27 +616,27 @@ The final Airflow task uploads this dataset back to AWS S3:
 
 PySpark Output
 
-&#x20;     │
+&#x20;     â”‚
 
-&#x20;     ▼
+&#x20;     â–¼
 
 late\_shipments.csv
 
-&#x20;     │
+&#x20;     â”‚
 
-&#x20;     ▼
+&#x20;     â–¼
 
 Python + Boto3
 
-&#x20;     │
+&#x20;     â”‚
 
-&#x20;     ▼
+&#x20;     â–¼
 
 AWS S3
 
-&#x20;     │
+&#x20;     â”‚
 
-&#x20;     ▼
+&#x20;     â–¼
 
 processed-data/late\_shipments.csv
 
@@ -648,7 +648,7 @@ processed-data/late\_shipments.csv
 
 
 
-\# ☁️ AWS S3 Data Organization
+\# â˜ï¸ AWS S3 Data Organization
 
 
 
@@ -660,37 +660,37 @@ The project separates raw and processed data into different logical layers.
 
 AWS S3 Bucket
 
-│
+â”‚
 
-├── raw-data/
+â”œâ”€â”€ raw-data/
 
-│   │
+â”‚   â”‚
 
-│   ├── olist\_customers\_dataset.csv
+â”‚   â”œâ”€â”€ olist\_customers\_dataset.csv
 
-│   ├── olist\_geolocation\_dataset.csv
+â”‚   â”œâ”€â”€ olist\_geolocation\_dataset.csv
 
-│   ├── olist\_order\_items\_dataset.csv
+â”‚   â”œâ”€â”€ olist\_order\_items\_dataset.csv
 
-│   ├── olist\_order\_payments\_dataset.csv
+â”‚   â”œâ”€â”€ olist\_order\_payments\_dataset.csv
 
-│   ├── olist\_order\_reviews\_dataset.csv
+â”‚   â”œâ”€â”€ olist\_order\_reviews\_dataset.csv
 
-│   ├── olist\_orders\_dataset.csv
+â”‚   â”œâ”€â”€ olist\_orders\_dataset.csv
 
-│   ├── olist\_products\_dataset.csv
+â”‚   â”œâ”€â”€ olist\_products\_dataset.csv
 
-│   ├── olist\_sellers\_dataset.csv
+â”‚   â”œâ”€â”€ olist\_sellers\_dataset.csv
 
-│   └── product\_category\_name\_translation.csv
+â”‚   â””â”€â”€ product\_category\_name\_translation.csv
 
-│
+â”‚
 
-└── processed-data/
+â””â”€â”€ processed-data/
 
-&#x20;   │
+&#x20;   â”‚
 
-&#x20;   └── late\_shipments.csv
+&#x20;   â””â”€â”€ late\_shipments.csv
 
 ```
 
@@ -708,11 +708,11 @@ RAW DATA                         PROCESSED DATA
 
 raw-data/                        processed-data/
 
-&#x20;   │                                  ▲
+&#x20;   â”‚                                  â–²
 
-&#x20;   │                                  │
+&#x20;   â”‚                                  â”‚
 
-&#x20;   └──► AIRFLOW ─► PYSPARK ─► SQL ───┘
+&#x20;   â””â”€â”€â–º AIRFLOW â”€â–º PYSPARK â”€â–º SQL â”€â”€â”€â”˜
 
 ```
 
@@ -722,7 +722,7 @@ raw-data/                        processed-data/
 
 
 
-\# 📋 Final Dataset Schema
+\# ðŸ“‹ Final Dataset Schema
 
 
 
@@ -766,7 +766,7 @@ The processed output contains \*\*13 columns\*\*.
 
 
 
-\# 📁 Project Structure
+\# ðŸ“ Project Structure
 
 
 
@@ -774,45 +774,45 @@ The processed output contains \*\*13 columns\*\*.
 
 olist-big-data-etl-pipeline/
 
-│
+â”‚
 
-├── airflow/
+â”œâ”€â”€ airflow/
 
-│   │
+â”‚   â”‚
 
-│   ├── dags/
+â”‚   â”œâ”€â”€ dags/
 
-│   │   └── late\_shipments\_to\_carrier\_dag.py
+â”‚   â”‚   â””â”€â”€ late\_shipments\_to\_carrier\_dag.py
 
-│   │
+â”‚   â”‚
 
-│   └── scripts/
+â”‚   â””â”€â”€ scripts/
 
-│       ├── s3\_download.py
+â”‚       â”œâ”€â”€ s3\_download.py
 
-│       ├── spark\_missed\_deadline\_job.py
+â”‚       â”œâ”€â”€ spark\_missed\_deadline\_job.py
 
-│       └── s3\_upload.py
+â”‚       â””â”€â”€ s3\_upload.py
 
-│
+â”‚
 
-├── screenshots/
+â”œâ”€â”€ screenshots/
 
-│   ├── airflow-dag-success.png
+â”‚   â”œâ”€â”€ airflow-dag-success.png
 
-│   ├── etl-results.png
+â”‚   â”œâ”€â”€ etl-results.png
 
-│   └── s3-processed-output.png
+â”‚   â””â”€â”€ s3-processed-output.png
 
-│
+â”‚
 
-├── Dockerfile
+â”œâ”€â”€ Dockerfile
 
-├── docker-compose.yaml
+â”œâ”€â”€ docker-compose.yaml
 
-├── .gitignore
+â”œâ”€â”€ .gitignore
 
-└── README.md
+â””â”€â”€ README.md
 
 ```
 
@@ -822,7 +822,7 @@ olist-big-data-etl-pipeline/
 
 
 
-\# 🐳 Dockerized Data Engineering Environment
+\# ðŸ³ Dockerized Data Engineering Environment
 
 
 
@@ -886,7 +886,7 @@ Docker provides:
 
 
 
-\# 🚀 How to Run the Project
+\# ðŸš€ How to Run the Project
 
 
 
@@ -932,7 +932,7 @@ Olist Dataset
 
 
 
-\## Step 1 — Clone the Repository
+\## Step 1 â€” Clone the Repository
 
 
 
@@ -960,7 +960,7 @@ cd olist-big-data-etl-pipeline
 
 
 
-\## Step 2 — Configure AWS Credentials
+\## Step 2 â€” Configure AWS Credentials
 
 
 
@@ -1002,7 +1002,7 @@ Output Format
 
 
 
-\## Step 3 — Prepare the S3 Raw Data Layer
+\## Step 3 â€” Prepare the S3 Raw Data Layer
 
 
 
@@ -1026,17 +1026,17 @@ Example:
 
 your-s3-bucket/
 
-│
+â”‚
 
-└── raw-data/
+â””â”€â”€ raw-data/
 
-&#x20;   ├── olist\_orders\_dataset.csv
+&#x20;   â”œâ”€â”€ olist\_orders\_dataset.csv
 
-&#x20;   ├── olist\_order\_items\_dataset.csv
+&#x20;   â”œâ”€â”€ olist\_order\_items\_dataset.csv
 
-&#x20;   ├── olist\_products\_dataset.csv
+&#x20;   â”œâ”€â”€ olist\_products\_dataset.csv
 
-&#x20;   └── ...
+&#x20;   â””â”€â”€ ...
 
 ```
 
@@ -1046,7 +1046,7 @@ your-s3-bucket/
 
 
 
-\## Step 4 — Build the Docker Image
+\## Step 4 â€” Build the Docker Image
 
 
 
@@ -1062,7 +1062,7 @@ docker compose build
 
 
 
-\## Step 5 — Start the Environment
+\## Step 5 â€” Start the Environment
 
 
 
@@ -1090,7 +1090,7 @@ docker ps
 
 
 
-\## Step 6 — Verify Airflow Scheduler
+\## Step 6 â€” Verify Airflow Scheduler
 
 
 
@@ -1118,7 +1118,7 @@ Found one alive job.
 
 
 
-\## Step 7 — Open Apache Airflow
+\## Step 7 â€” Open Apache Airflow
 
 
 
@@ -1154,7 +1154,7 @@ Enable the DAG and manually trigger it.
 
 
 
-\## Step 8 — Monitor Pipeline Execution
+\## Step 8 â€” Monitor Pipeline Execution
 
 
 
@@ -1166,15 +1166,15 @@ The pipeline executes:
 
 download\_raw\_data\_from\_s3
 
-&#x20;           │
+&#x20;           â”‚
 
-&#x20;           ▼
+&#x20;           â–¼
 
 process\_late\_shipments
 
-&#x20;           │
+&#x20;           â”‚
 
-&#x20;           ▼
+&#x20;           â–¼
 
 upload\_processed\_data\_to\_s3
 
@@ -1188,7 +1188,7 @@ Wait until all three tasks show:
 
 ```text
 
-SUCCESS ✅
+SUCCESS âœ…
 
 ```
 
@@ -1198,7 +1198,7 @@ SUCCESS ✅
 
 
 
-\## Step 9 — Verify Final Output
+\## Step 9 â€” Verify Final Output
 
 
 
@@ -1232,7 +1232,7 @@ Columns:  13
 
 
 
-\# 🧠 Skills Demonstrated
+\# ðŸ§  Skills Demonstrated
 
 
 
@@ -1328,7 +1328,7 @@ Columns:  13
 
 
 
-\# 🔐 Security Practices
+\# ðŸ” Security Practices
 
 
 
@@ -1390,7 +1390,7 @@ AWS credentials are configured locally rather than hard-coded into the source co
 
 
 
-\# 🎯 Business Value
+\# ðŸŽ¯ Business Value
 
 
 
@@ -1442,7 +1442,7 @@ How does late carrier handover affect final customer delivery?
 
 
 
-\# 📈 Project Highlights
+\# ðŸ“ˆ Project Highlights
 
 
 
@@ -1450,25 +1450,25 @@ How does late carrier handover affect final customer delivery?
 
 |---|---|
 
-| 📥 Data ingestion | AWS S3 + Boto3 |
+| ðŸ“¥ Data ingestion | AWS S3 + Boto3 |
 
-| ⚙️ Workflow orchestration | Apache Airflow |
+| âš™ï¸ Workflow orchestration | Apache Airflow |
 
-| 🔥 Distributed processing | PySpark / Apache Spark |
+| ðŸ”¥ Distributed processing | PySpark / Apache Spark |
 
-| 🗃️ Data transformation | Spark SQL |
+| ðŸ—ƒï¸ Data transformation | Spark SQL |
 
-| ☁️ Cloud storage | AWS S3 |
+| â˜ï¸ Cloud storage | AWS S3 |
 
-| 🐳 Containerization | Docker |
+| ðŸ³ Containerization | Docker |
 
-| 📊 Processed output | 10,423 records |
+| ðŸ“Š Processed output | 10,423 records |
 
-| 📋 Output schema | 13 columns |
+| ðŸ“‹ Output schema | 13 columns |
 
-| 🔄 Automated stages | 3 Airflow tasks |
+| ðŸ”„ Automated stages | 3 Airflow tasks |
 
-| ✅ Final status | Successfully executed |
+| âœ… Final status | Successfully executed |
 
 
 
@@ -1476,7 +1476,7 @@ How does late carrier handover affect final customer delivery?
 
 
 
-\# 🔮 Future Enhancements
+\# ðŸ”® Future Enhancements
 
 
 
@@ -1512,7 +1512,7 @@ Possible improvements include:
 
 
 
-\# 🏁 Final Outcome
+\# ðŸ Final Outcome
 
 
 
@@ -1520,55 +1520,55 @@ Possible improvements include:
 
 &#x20;               OLIST E-COMMERCE DATA
 
-&#x20;                        │
+&#x20;                        â”‚
 
-&#x20;                        ▼
+&#x20;                        â–¼
 
-&#x20;                ☁️ AWS S3 RAW LAYER
+&#x20;                â˜ï¸ AWS S3 RAW LAYER
 
-&#x20;                        │
+&#x20;                        â”‚
 
-&#x20;                        ▼
+&#x20;                        â–¼
 
-&#x20;                 🐍 PYTHON + BOTO3
+&#x20;                 ðŸ PYTHON + BOTO3
 
-&#x20;                        │
+&#x20;                        â”‚
 
-&#x20;                        ▼
+&#x20;                        â–¼
 
-&#x20;                ⚙️ APACHE AIRFLOW
+&#x20;                âš™ï¸ APACHE AIRFLOW
 
-&#x20;                        │
+&#x20;                        â”‚
 
-&#x20;                        ▼
+&#x20;                        â–¼
 
-&#x20;               🔥 PYSPARK + SPARK SQL
+&#x20;               ðŸ”¥ PYSPARK + SPARK SQL
 
-&#x20;                        │
+&#x20;                        â”‚
 
-&#x20;                        ▼
+&#x20;                        â–¼
 
-&#x20;               📊 LOGISTICS ANALYSIS
+&#x20;               ðŸ“Š LOGISTICS ANALYSIS
 
-&#x20;                        │
+&#x20;                        â”‚
 
-&#x20;                        ▼
+&#x20;                        â–¼
 
 &#x20;              10,423 LATE-SHIPMENT
 
 &#x20;                    RECORDS
 
-&#x20;                        │
+&#x20;                        â”‚
 
-&#x20;                        ▼
+&#x20;                        â–¼
 
-&#x20;               ☁️ AWS S3 PROCESSED
+&#x20;               â˜ï¸ AWS S3 PROCESSED
 
-&#x20;                        │
+&#x20;                        â”‚
 
-&#x20;                        ▼
+&#x20;                        â–¼
 
-&#x20;                ✅ PIPELINE SUCCESS
+&#x20;                âœ… PIPELINE SUCCESS
 
 ```
 
@@ -1578,7 +1578,7 @@ Possible improvements include:
 
 
 
-\# 👨‍💻 Project
+\# ðŸ‘¨â€ðŸ’» Project
 
 
 
@@ -1594,7 +1594,7 @@ Built as a hands-on data engineering project demonstrating an end-to-end workflo
 
 
 
-\*\*Python • PySpark • Apache Spark • Spark SQL • Apache Airflow • AWS S3 • Boto3 • Docker • Git\*\*
+\*\*Python â€¢ PySpark â€¢ Apache Spark â€¢ Spark SQL â€¢ Apache Airflow â€¢ AWS S3 â€¢ Boto3 â€¢ Docker â€¢ Git\*\*
 
 
 
@@ -1602,5 +1602,5 @@ Built as a hands-on data engineering project demonstrating an end-to-end workflo
 
 
 
-⭐ \*\*If you find this project useful, consider starring the repository.\*\*
+â­ \*\*If you find this project useful, consider starring the repository.\*\*
 
