@@ -1,0 +1,68 @@
+# ==========================================
+# Python
+# ==========================================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+
+# ==========================================
+# Environment Variables & Secrets
+# ==========================================
+.env
+.env.*
+*.pem
+*.key
+
+
+# ==========================================
+# AWS Credentials
+# ==========================================
+.aws/
+credentials
+
+
+# ==========================================
+# Airflow Local Files
+# ==========================================
+airflow.db
+*.db
+standalone_admin_password.txt
+logs/
+airflow/logs/
+
+
+# ==========================================
+# Local Datasets & Generated Output
+# ==========================================
+# Raw datasets are stored in AWS S3 and
+# should not be committed to GitHub.
+Data/
+
+
+# ==========================================
+# Spark Temporary Files
+# ==========================================
+.sparkStaging/
+metastore_db/
+derby.log
+
+
+# ==========================================
+# IDE Files
+# ==========================================
+.vscode/
+.idea/
+
+
+# ==========================================
+# Operating System Files
+# ==========================================
+.DS_Store
+Thumbs.db

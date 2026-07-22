@@ -1,0 +1,27 @@
+services:
+  airflow:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: olist-airflow
+
+    environment:
+      AIRFLOW__CORE__EXECUTOR: SequentialExecutor
+      AIRFLOW__CORE__LOAD_EXAMPLES: "False"
+      AIRFLOW__DATABASE__SQL_ALCHEMY_CONN: sqlite:////opt/airflow/airflow.db
+
+      AWS_DEFAULT_REGION: ap-south-1
+      AWS_SHARED_CREDENTIALS_FILE: /home/airflow/.aws/credentials
+      AWS_CONFIG_FILE: /home/airflow/.aws/config
+
+    ports:
+      - "8080:8080"
+
+    volumes:
+      - ./airflow/dags:/opt/airflow/dags
+      - ./airflow/scripts:/opt/airflow/scripts
+      - ./Data:/opt/airflow/Data
+      - ${USERPROFILE}/.aws:/home/airflow/.aws:ro
+
+    command: standalone
